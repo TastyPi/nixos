@@ -3,7 +3,6 @@ let
 in
 {
   imports = [
-    ./modules/1password.nix
     ./modules/amdcpu.nix
     ./modules/amdgpu.nix
     ./modules/boot.nix
