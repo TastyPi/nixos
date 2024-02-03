@@ -7,6 +7,10 @@
       init = {
         defaultBranch = "main";
       };
+      pull = {
+        rebase = true;
+        ff = "only";
+      };
       push = {
         autoSetupRemote = true;
       };
