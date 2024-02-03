@@ -22,6 +22,7 @@
       yelp
     ];
     systemPackages = with pkgs; [
+      discord
       firefox
       gnome-usage
       loupe
