@@ -1,7 +1,5 @@
 {
-  console.keyMap ="uk";
-  services.xserver.xkb.layout = "gb";
-  time.timeZone = "Europe/London";
+  console.keyMap = "uk";
   i18n = rec {
     defaultLocale = "en_GB.UTF-8";
     extraLocaleSettings = {
@@ -9,4 +7,6 @@
       LC_ALL = defaultLocale;
     };
   };
+  services.xserver.xkb.layout = "gb";
+  time.timeZone = "Europe/London";
 }
