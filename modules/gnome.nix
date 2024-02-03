@@ -21,7 +21,12 @@
       simple-scan
       yelp
     ];
-    systemPackages = with pkgs; [ loupe firefox gnome-usage ];
+    systemPackages = with pkgs; [
+      firefox
+      gnome-usage
+      loupe
+      signal-desktop
+    ];
   };
   networking.networkmanager.enable = true;
   services = {
