@@ -22,12 +22,9 @@
       yelp
     ];
     systemPackages = with pkgs; [
-      discord
       firefox
       gnome-usage
       loupe
-      signal-desktop
-      whatsapp-for-linux
     ];
   };
   networking.networkmanager.enable = true;

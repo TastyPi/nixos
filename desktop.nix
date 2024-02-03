@@ -3,15 +3,11 @@ let
 in
 {
   imports = [
-    ./modules/amdcpu.nix
-    ./modules/amdgpu.nix
-    ./modules/boot.nix
-    ./modules/git.nix
-    ./modules/gnome.nix
-    ./modules/locale.nix
-    ./modules/pipewire.nix
-    ./modules/users.nix
-    ./modules/zsh.nix
+    ./hardware/amdcpu.nix
+    ./hardware/amdgpu.nix
+    ./hardware/pipewire.nix
+    ./desktop/chat.nix
+    ./desktop/gnome.nix
   ];
   boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
   fileSystems = {

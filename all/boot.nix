@@ -1,6 +1,5 @@
 {
   boot = {
-    initrd.availableKernelModules = [ "nvme" "usbhid" ];
     loader = { 
       efi.canTouchEfiVariables = true;
       systemd-boot = {
