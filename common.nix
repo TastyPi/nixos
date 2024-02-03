@@ -5,4 +5,5 @@
   hardware.enableAllFirmware = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  system.autoUpgrade.flake = "github:TastyPi/nixos";
 }
