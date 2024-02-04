@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ gh ];
+  environment.systemPackages = with pkgs; [ gh git-crypt ];
   programs.git = {
     enable = true;
     config = {

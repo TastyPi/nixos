@@ -27,7 +27,6 @@
       loupe
     ];
   };
-  networking.networkmanager.enable = true;
   programs._1password-gui.enable = true;
   services = {
     gnome = {

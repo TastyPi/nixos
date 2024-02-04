@@ -9,6 +9,11 @@ in
     ./desktop/chat.nix
     ./desktop/gnome.nix
   ];
+  
+  networking.hostName = hostName;
+  nixpkgs.hostPlatform = "x86_64-linux";
+  
+  # Disks
   boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
   fileSystems = {
     "/" = {
@@ -20,11 +25,15 @@ in
       fsType = "vfat";
     };
   };
-  networking.hostName = hostName;
-  nixpkgs.hostPlatform = "x86_64-linux";
+  
+  # Networking
+  networking.networkmanager.enable = true;
+  
+  # Auto-upgrade
   system.autoUpgrade = {
     enable = true;
     dates = "daily";
+    # Don't want to suddenly switch while using the machine
     operation = "boot";
   };
 }
