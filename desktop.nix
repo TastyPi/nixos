@@ -6,6 +6,8 @@ in
     ./hardware/amdcpu.nix
     ./hardware/amdgpu.nix
     ./hardware/pipewire.nix
+
+    ./desktop/adb.nix
     ./desktop/chat.nix
     ./desktop/gnome.nix
   ];
