@@ -9,7 +9,7 @@ rec {
   };
   
   tastypi.caddy.transmission = {
-    authelia = true;
+    authelia.enable = true;
     endpoint = "transmission:9091";
   };
   

@@ -21,7 +21,7 @@ rec {
   };
   
   tastypi.caddy.zwave = {
-    authelia = true;
+    authelia.enable = true;
     endpoint = "zwave:8091";
   };
   

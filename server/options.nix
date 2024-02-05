@@ -7,8 +7,16 @@ with types;
       default = {};
       type = attrsOf (submodule {
         options = {
-          authelia = mkOption { default = false; type = types.bool; };
-          endpoint = mkOption { type = types.str; };
+          authelia = mkOption {
+            default = {};
+            type = submodule {
+              options = {
+                enable = mkOption { default = false; type = bool; };
+                match = mkOption { default = {}; type = attrs; };
+              };
+            };
+          };
+          endpoint = mkOption { type = str; };
         };
       });
     };

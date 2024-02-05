@@ -21,7 +21,7 @@ rec {
   };
   
   tastypi.caddy.sonarr = {
-    authelia = true;
+    authelia.enable = true;
     endpoint = "sonarr:8989";
   };
   

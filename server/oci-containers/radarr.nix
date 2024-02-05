@@ -21,7 +21,7 @@ rec {
   };
   
   tastypi.caddy.radarr = {
-    authelia = true;
+    authelia.enable = true;
     endpoint = "radarr:7878";
   };
   

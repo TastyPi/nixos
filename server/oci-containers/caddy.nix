@@ -15,9 +15,9 @@ let
               handle = [{
                 handler = "subroute";
                 routes = concatLists (mapAttrsToList (subdomain: subdomainConfig: concatLists [
-                  (optional subdomainConfig.authelia {
+                  (optional subdomainConfig.authelia.enable {
                     # https://caddyserver.com/docs/caddyfile/directives/forward_auth#expanded-form
-                    match = [{ host = [ "${subdomain}.rogers.me.uk" ]; }];
+                    match = [({ host = [ "${subdomain}.rogers.me.uk" ]; } // subdomainConfig.authelia.match)];
                     handle = [{
                       handler = "reverse_proxy";
                       rewrite = {
@@ -31,6 +31,12 @@ let
                       upstreams = [{ dial = config.tastypi.caddy.authelia.endpoint; }];
                       handle_response = [{
                         match.status_code = [ 2 ];
+                        routes = [{
+                          handle = [{
+                            handler = "headers";
+                            request.set.Remote-User = [ "{http.reverse_proxy.header.Remote-User}" ];
+                          }];
+                        }];
                       }];
                     }];
                   })

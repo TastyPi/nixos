@@ -3,6 +3,7 @@
     ./oci-containers/authelia.nix
     ./oci-containers/caddy.nix
     ./oci-containers/cloudflared.nix
+    ./oci-containers/filebrowser.nix
     ./oci-containers/flaresolverr.nix
     ./oci-containers/gotify.nix
     ./oci-containers/home-assistant.nix

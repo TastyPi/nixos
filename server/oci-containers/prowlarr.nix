@@ -18,7 +18,7 @@ rec {
   };
   
   tastypi.caddy.prowlarr = {
-    authelia = true;
+    authelia.enable = true;
     endpoint = "prowlarr:9696";
   };
   
