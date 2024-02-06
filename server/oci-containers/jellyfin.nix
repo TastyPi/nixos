@@ -19,7 +19,7 @@ rec {
   };
   
   virtualisation.oci-containers.containers.jellyfin = {
-    image = "docker.io/jellyfin/jellyfin:latest";
+    image = "docker.io/jellyfin/jellyfin:20240126.4-unstable";
     labels = { "io.containers.autoupdate" = "registry"; };
     user = "${toString users.users.jellyfin.uid}:${toString config.users.groups.media.gid}";
     volumes = [
@@ -28,12 +28,6 @@ rec {
       "/data/oci-containers/jellyfin/config:/config:rw"
       "/etc/localtime:/etc/localtime:ro"
     ];
-    environment = {
-      #JELLYFIN_CONFIG_DIR = "/config";
-      #JELLYFIN_DATA_DIR = "/data";
-      #JELLYFIN_LOG_DIR = "/log";
-      #JELLYFIN_CACHE_DIR = "/cache";
-    };
     extraOptions = [
       "--device=/dev/dri:/dev/dri"
     ];

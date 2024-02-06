@@ -14,6 +14,7 @@
     ./oci-containers/radarr.nix
     ./oci-containers/recyclarr.nix
     ./oci-containers/sonarr.nix
+    ./oci-containers/syncthing.nix
     ./oci-containers/transmission.nix
     ./oci-containers/zwave.nix
   ];
