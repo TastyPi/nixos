@@ -10,6 +10,7 @@ in
     ./desktop/adb.nix
     ./desktop/chat.nix
     ./desktop/gnome.nix
+    ./desktop/picard.nix
   ];
   
   networking.hostName = hostName;
