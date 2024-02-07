@@ -2,6 +2,7 @@
   system.stateVersion = "23.11";
 
   imports = [
+    ./all/archives.nix
     ./all/boot.nix
     ./all/git.nix
     ./all/locale.nix
