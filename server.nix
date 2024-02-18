@@ -4,6 +4,7 @@ in
 {
   imports = [
     ./hardware/intelcpu.nix
+    ./server/btrfs.nix
     ./server/data.nix
     ./server/msmtp.nix
     ./server/networking.nix
