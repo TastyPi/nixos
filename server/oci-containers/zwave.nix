@@ -10,21 +10,21 @@ rec {
       group = "zwave";
     };
   };
-  
+
   services.udev.extraRules = ''
     ENV{ID_MODEL}=="CP2102N_USB_to_UART_Bridge_Controller", GROUP="zwave"
   '';
-  
+
   systemd.services.podman-zwave = {
     after = [ "data.mount" ];
     requires = [ "data.mount" ];
   };
-  
+
   tastypi.caddy.zwave = {
     authelia.enable = true;
     endpoint = "zwave:8091";
   };
-  
+
   virtualisation.oci-containers.containers.zwave = {
     image = "docker.io/zwavejs/zwave-js-ui";
     labels = { "io.containers.autoupdate" = "registry"; };

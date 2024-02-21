@@ -4,15 +4,15 @@ with types;
 {
   options.tastypi = {
     caddy = mkOption {
-      default = {};
+      default = { };
       type = attrsOf (submodule {
         options = {
           authelia = mkOption {
-            default = {};
+            default = { };
             type = submodule {
               options = {
                 enable = mkOption { default = false; type = bool; };
-                match = mkOption { default = {}; type = attrs; };
+                match = mkOption { default = { }; type = attrs; };
               };
             };
           };
@@ -20,9 +20,9 @@ with types;
         };
       });
     };
-    
+
     mailrise = mkOption {
-      default = {};
+      default = { };
       type = attrsOf (submodule {
         options = {
           gotify = mkOption {
@@ -33,7 +33,7 @@ with types;
               };
             };
           };
-          mailrise = mkOption { default = {}; type = attrs; };
+          mailrise = mkOption { default = { }; type = attrs; };
         };
       });
     };

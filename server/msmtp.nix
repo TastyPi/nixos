@@ -1,7 +1,7 @@
 { config, ... }:
 {
   programs.msmtp = {
-    enable = config.tastypi.mailrise != {};
+    enable = config.tastypi.mailrise != { };
     accounts = {
       default = {
         host = "localhost";

@@ -10,7 +10,7 @@ rec {
       group = "media";
     };
   };
-  
+
   systemd.services.podman-radarr = {
     after = [ "data.mount" ];
     requires = [
@@ -19,12 +19,12 @@ rec {
       "podman-transmission.service"
     ];
   };
-  
+
   tastypi.caddy.radarr = {
     authelia.enable = true;
     endpoint = "radarr:7878";
   };
-  
+
   virtualisation.oci-containers.containers.radarr = {
     image = "lscr.io/linuxserver/radarr:latest";
     labels = { "io.containers.autoupdate" = "registry"; };

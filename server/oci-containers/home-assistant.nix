@@ -7,9 +7,9 @@ rec {
     requires = [ "data.mount" ];
     wants = [ "podman-matter.service" "podman-zwave.service" ];
   };
-  
+
   tastypi.caddy.home-assistant.endpoint = "home-assistant:8123";
-  
+
   users = rec {
     groups.home-assistant.gid = users.home-assistant.uid;
     users.home-assistant = {
@@ -18,7 +18,7 @@ rec {
       group = "home-assistant";
     };
   };
-  
+
   virtualisation.oci-containers.containers.home-assistant = {
     image = "ghcr.io/home-assistant/home-assistant:stable";
     labels = { "io.containers.autoupdate" = "registry"; };

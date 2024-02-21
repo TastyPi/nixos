@@ -19,10 +19,10 @@
     ./oci-containers/transmission.nix
     ./oci-containers/zwave.nix
   ];
-  
+
   # Enable auto-updates
   systemd.units."podman-auto-update.timer".wantedBy = [ "timers.target" ];
-  
+
   virtualisation.podman = {
     autoPrune = {
       enable = true;

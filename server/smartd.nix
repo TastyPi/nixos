@@ -9,7 +9,7 @@
       };
     };
   };
-  
+
   tastypi.mailrise.smartd = {
     gotify = {
       token = (import ../secrets/gotify.nix).smartd;

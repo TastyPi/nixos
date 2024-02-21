@@ -10,18 +10,18 @@ rec {
       group = "prowlarr";
     };
   };
-  
+
   systemd.services.podman-prowlarr = {
     after = [ "data.mount" ];
     requires = [ "data.mount" ];
     wants = [ "podman-flaresolverr.service" ];
   };
-  
+
   tastypi.caddy.prowlarr = {
     authelia.enable = true;
     endpoint = "prowlarr:9696";
   };
-  
+
   virtualisation.oci-containers.containers.prowlarr = {
     image = "lscr.io/linuxserver/prowlarr:latest";
     labels = { "io.containers.autoupdate" = "registry"; };

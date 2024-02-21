@@ -1,4 +1,4 @@
-{ config, ...}:
+{ config, ... }:
 with builtins;
 let
   filebrowserConfig = { port = 8080; };
@@ -10,7 +10,7 @@ rec {
     after = [ "data.mount" ];
     requires = [ "data.mount" ];
   };
-  
+
   tastypi.caddy.filebrowser = {
     authelia = {
       enable = true;
@@ -18,7 +18,7 @@ rec {
     };
     endpoint = "filebrowser:${toString filebrowserConfig.port}";
   };
-  
+
   virtualisation.oci-containers.containers.filebrowser = {
     image = "docker.io/filebrowser/filebrowser:latest";
     labels = { "io.containers.autoupdate" = "registry"; };

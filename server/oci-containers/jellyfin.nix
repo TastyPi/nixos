@@ -26,9 +26,9 @@ rec {
       requires = [ "data.mount" ];
     };
   };
-  
+
   tastypi.caddy.jellyfin.endpoint = "jellyfin:8096";
-  
+
   users = rec {
     users.jellyfin = {
       isSystemUser = true;
@@ -41,7 +41,7 @@ rec {
       group = "media";
     };
   };
-  
+
   #virtualisation.oci-containers.containers.jellyfin = {
   #  image = "docker.io/jellyfin/jellyfin:20240126.4-unstable";
   #  labels = { "io.containers.autoupdate" = "registry"; };
@@ -56,7 +56,7 @@ rec {
   #    "--device=/dev/dri:/dev/dri"
   #  ];
   #};
-  
+
   virtualisation.oci-containers.containers = {
     jellyfin = jellyfin {
       name = "rogers.me.uk";

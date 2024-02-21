@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ picard ]; 
+  environment.systemPackages = with pkgs; [ picard ];
 }

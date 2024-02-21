@@ -12,7 +12,7 @@
 
   documentation.enable = false;
   hardware.enableAllFirmware = true;
-  
+
   nix = {
     gc = {
       automatic = true;
@@ -23,7 +23,7 @@
       experimental-features = [ "nix-command" "flakes" ];
     };
   };
-  
+
   nixpkgs.config.allowUnfree = true;
   system.autoUpgrade.flake = "github:TastyPi/nixos/main";
 }

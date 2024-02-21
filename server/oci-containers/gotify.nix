@@ -9,9 +9,9 @@ rec {
     after = [ "data.mount" ];
     requires = [ "data.mount" ];
   };
-  
+
   tastypi.caddy.gotify.endpoint = "gotify:${port}";
-  
+
   users = rec {
     groups.gotify.gid = users.gotify.uid;
     users.gotify = {
@@ -20,7 +20,7 @@ rec {
       group = "gotify";
     };
   };
-  
+
   virtualisation.oci-containers.containers.gotify = {
     image = "ghcr.io/gotify/server:latest";
     labels = { "io.containers.autoupdate" = "registry"; };

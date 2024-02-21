@@ -1,12 +1,14 @@
 { config, lib, ... }:
 with builtins;
 with lib;
-let 
+let
   mailriseConfig = {
-    configs = mapAttrs (app: appConfig: {
-      urls = [ "gotify://${config.tastypi.caddy.gotify.endpoint}/${appConfig.gotify.token}?priority=${appConfig.gotify.priority}" ];
-      mailrise = appConfig.mailrise;
-    }) config.tastypi.mailrise;
+    configs = mapAttrs
+      (app: appConfig: {
+        urls = [ "gotify://${config.tastypi.caddy.gotify.endpoint}/${appConfig.gotify.token}?priority=${appConfig.gotify.priority}" ];
+        mailrise = appConfig.mailrise;
+      })
+      config.tastypi.mailrise;
   };
 in
 {

@@ -28,23 +28,25 @@ in
       what = "/dev/mapper/${head (attrNames drivePaths)}";
       where = "/data";
     }];
-    services = concatMapAttrs (name: path: {
-      "cryptsetup-${name}" = {
-        serviceConfig = {
-          ExecStart = "${pkgs.systemd}/bin/systemd-cryptsetup attach '${name}' '${path}' /root/keyfiles/data 'luks,key-slot=1'";
-          ExecStop = "${pkgs.systemd}/bin/systemd-cryptsetup detach '${name}'";
-          RemainAfterExit = true;
-          TimeoutSec = 0;
-          Type = "oneshot";
+    services = concatMapAttrs
+      (name: path: {
+        "cryptsetup-${name}" = {
+          serviceConfig = {
+            ExecStart = "${pkgs.systemd}/bin/systemd-cryptsetup attach '${name}' '${path}' /root/keyfiles/data 'luks,key-slot=1'";
+            ExecStop = "${pkgs.systemd}/bin/systemd-cryptsetup detach '${name}'";
+            RemainAfterExit = true;
+            TimeoutSec = 0;
+            Type = "oneshot";
+          };
+          unitConfig = {
+            After = [ "systemd-random-seed-load.service" "systemd-readahead-collect.service" "systemd-readahead-replay.service" ];
+            Before = [ "cryptsetup.target" "umount.target" ];
+            Conflicts = [ "umount.target" ];
+            DefaultDependencies = "no";
+            PartOf = "data.mount";
+          };
         };
-        unitConfig = {
-          After = [ "systemd-random-seed-load.service" "systemd-readahead-collect.service" "systemd-readahead-replay.service" ];
-          Before = [ "cryptsetup.target" "umount.target" ];
-          Conflicts = [ "umount.target" ];
-          DefaultDependencies = "no";
-          PartOf = "data.mount";
-        };
-      };
-    }) drivePaths;
+      })
+      drivePaths;
   };
 }

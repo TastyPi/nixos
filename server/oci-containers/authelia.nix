@@ -25,11 +25,11 @@ rec {
 
   systemd.services.podman-authelia = {
     after = [ "data.mount" ];
-    requires = [ "data.mount" ]; 
+    requires = [ "data.mount" ];
   };
-  
+
   tastypi.caddy.authelia.endpoint = "authelia:9091";
-  
+
   users = rec {
     groups.authelia.gid = users.authelia.uid;
     users.authelia = {
@@ -38,7 +38,7 @@ rec {
       group = "authelia";
     };
   };
-  
+
   virtualisation.oci-containers.containers.authelia = {
     image = "ghcr.io/authelia/authelia";
     labels = { "io.containers.autoupdate" = "registry"; };

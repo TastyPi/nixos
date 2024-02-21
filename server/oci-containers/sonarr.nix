@@ -10,7 +10,7 @@ rec {
       group = "media";
     };
   };
-  
+
   systemd.services.podman-sonarr = {
     after = [ "data.mount" ];
     requires = [
@@ -19,12 +19,12 @@ rec {
       "podman-transmission.service"
     ];
   };
-  
+
   tastypi.caddy.sonarr = {
     authelia.enable = true;
     endpoint = "sonarr:8989";
   };
-  
+
   virtualisation.oci-containers.containers.sonarr = {
     image = "lscr.io/linuxserver/sonarr:latest";
     labels = { "io.containers.autoupdate" = "registry"; };

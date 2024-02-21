@@ -1,4 +1,4 @@
-{ config, ...}:
+{ config, ... }:
 with builtins;
 rec {
   imports = [ ../options.nix ];
@@ -7,12 +7,12 @@ rec {
     after = [ "data.mount" ];
     requires = [ "data.mount" ];
   };
-  
+
   tastypi.caddy.transmission = {
     authelia.enable = true;
     endpoint = "transmission:9091";
   };
-  
+
   users = {
     users.transmission = {
       isSystemUser = true;
@@ -20,7 +20,7 @@ rec {
       group = "media";
     };
   };
-  
+
   virtualisation.oci-containers.containers.transmission = {
     image = "lscr.io/linuxserver/transmission:latest";
     labels = { "io.containers.autoupdate" = "registry"; };

@@ -14,37 +14,39 @@ let
               match = [{ host = [ "*.rogers.me.uk" ]; }];
               handle = [{
                 handler = "subroute";
-                routes = concatLists (mapAttrsToList (subdomain: subdomainConfig: concatLists [
-                  (optional subdomainConfig.authelia.enable {
-                    # https://caddyserver.com/docs/caddyfile/directives/forward_auth#expanded-form
-                    match = [({ host = [ "${subdomain}.rogers.me.uk" ]; } // subdomainConfig.authelia.match)];
-                    handle = [{
-                      handler = "reverse_proxy";
-                      rewrite = {
-                        method = "GET";
-                        uri = "/api/verify?rd=https://authelia.rogers.me.uk";
-                      };
-                      headers.request.set = {
-                        "X-Forwarded-Method" = [ "{http.request.method}" ];
-                        "X-Forwarded-Uri" = [ "{http.request.uri}" ];
-                      };
-                      upstreams = [{ dial = config.tastypi.caddy.authelia.endpoint; }];
-                      handle_response = [{
-                        match.status_code = [ 2 ];
-                        routes = [{
-                          handle = [{
-                            handler = "headers";
-                            request.set.Remote-User = [ "{http.reverse_proxy.header.Remote-User}" ];
+                routes = concatLists (mapAttrsToList
+                  (subdomain: subdomainConfig: concatLists [
+                    (optional subdomainConfig.authelia.enable {
+                      # https://caddyserver.com/docs/caddyfile/directives/forward_auth#expanded-form
+                      match = [ ({ host = [ "${subdomain}.rogers.me.uk" ]; } // subdomainConfig.authelia.match) ];
+                      handle = [{
+                        handler = "reverse_proxy";
+                        rewrite = {
+                          method = "GET";
+                          uri = "/api/verify?rd=https://authelia.rogers.me.uk";
+                        };
+                        headers.request.set = {
+                          "X-Forwarded-Method" = [ "{http.request.method}" ];
+                          "X-Forwarded-Uri" = [ "{http.request.uri}" ];
+                        };
+                        upstreams = [{ dial = config.tastypi.caddy.authelia.endpoint; }];
+                        handle_response = [{
+                          match.status_code = [ 2 ];
+                          routes = [{
+                            handle = [{
+                              handler = "headers";
+                              request.set.Remote-User = [ "{http.reverse_proxy.header.Remote-User}" ];
+                            }];
                           }];
                         }];
                       }];
-                    }];
-                  })
-                  [{
-                    match = [{ host = [ "${subdomain}.rogers.me.uk" ]; }];
-                    handle = [{ handler = "reverse_proxy"; upstreams = [{ dial = subdomainConfig.endpoint; }]; }];
-                  }]
-                ]) config.tastypi.caddy);
+                    })
+                    [{
+                      match = [{ host = [ "${subdomain}.rogers.me.uk" ]; }];
+                      handle = [{ handler = "reverse_proxy"; upstreams = [{ dial = subdomainConfig.endpoint; }]; }];
+                    }]
+                  ])
+                  config.tastypi.caddy);
               }];
             }];
           };
@@ -69,13 +71,13 @@ rec {
   # https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes
   boot.kernel.sysctl."net.core.rmem_max" = 2500000;
   boot.kernel.sysctl."net.core.wmem_max" = 2500000;
-  
+
   systemd.services.podman-caddy = {
     after = [ "data.mount" ];
     requires = [ "data.mount" ];
     wants = [ "podman-authelia.service" ];
   };
-  
+
   users = rec {
     groups.caddy.gid = users.caddy.uid;
     users.caddy = {
@@ -84,7 +86,7 @@ rec {
       uid = 800;
     };
   };
-  
+
   virtualisation.oci-containers.containers.caddy = {
     image = "ghcr.io/tastypi/caddy-cloudflare:latest";
     cmd = [ "caddy" "run" "--config=/etc/caddy/caddy.json" ];

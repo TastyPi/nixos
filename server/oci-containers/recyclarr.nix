@@ -96,12 +96,12 @@ rec {
       group = "recyclarr";
     };
   };
-  
+
   systemd.services.podman-recyclarr = {
     after = [ "data.mount" ];
     requires = [ "data.mount" ];
   };
-  
+
   virtualisation.oci-containers.containers.recyclarr = {
     image = "ghcr.io/recyclarr/recyclarr:latest";
     labels = { "io.containers.autoupdate" = "registry"; };
