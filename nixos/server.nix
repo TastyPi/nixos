@@ -16,7 +16,7 @@
     ./server/users.nix
     {
       networking.hostName = "server";
-    
+
       # Disks
       boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
       fileSystems = {

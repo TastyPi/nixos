@@ -17,6 +17,10 @@ let
   drives = mapAttrsToList (name: value: name) drivePaths;
 in
 {
+  services.btrfs.autoScrub = {
+    enable = true;
+    fileSystems = [ "/data" ];
+  };
   systemd = rec {
     mounts = let cryptsetups = map (name: "${name}.service") (attrNames services); in [{
       after = cryptsetups;
