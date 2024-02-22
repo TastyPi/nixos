@@ -10,7 +10,6 @@
 
     ./all.nix
     ./desktop/adb.nix
-    ./desktop/chat.nix
     ./desktop/gnome.nix
     ./desktop/picard.nix
     {
@@ -39,6 +38,8 @@
         # Don't want to suddenly switch while using the machine
         operation = "boot";
       };
+
+      home-manager.users.graham = import ../home/graham/desktop.nix;
     }
   ];
 }
