@@ -26,4 +26,7 @@
 
   nixpkgs.config.allowUnfree = true;
   system.autoUpgrade.flake = "github:TastyPi/nixos/main";
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 }

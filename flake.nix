@@ -1,5 +1,9 @@
 {
-  outputs = inputs@{ self, nixpkgs }:
+  inputs.home-manager = {
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+  outputs = inputs@{ nixpkgs, ... }:
     let
       inherit (builtins) listToAttrs map;
       inherit (nixpkgs.lib) nixosSystem;

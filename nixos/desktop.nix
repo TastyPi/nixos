@@ -1,7 +1,9 @@
-{ ... }:
+{ home-manager, ... }:
 {
   system = "x86_64-linux";
   modules = [
+    home-manager.nixosModules.home-manager
+
     ../hardware/amdcpu.nix
     ../hardware/amdgpu.nix
     ../hardware/pipewire.nix

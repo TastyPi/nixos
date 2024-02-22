@@ -2,6 +2,8 @@
 {
   system = "x86_64-linux";
   modules = [
+    home-manager.nixosModules.home-manager
+
     ../hardware/intelcpu.nix
 
     ./all.nix

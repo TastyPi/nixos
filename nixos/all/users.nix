@@ -7,4 +7,5 @@
     shell = pkgs.zsh;
     uid = 1000;
   };
+  home-manager.users.graham = import ../../home/graham.nix;
 }
