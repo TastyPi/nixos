@@ -1,13 +1,13 @@
 {
-  outputs = { self, nixpkgs }: {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        modules = [ ./all.nix ./desktop.nix ];
-      };
-      server = nixpkgs.lib.nixosSystem {
-        modules = [ ./all.nix ./server.nix ];
-      };
+  outputs = inputs@{ self, nixpkgs }:
+    let
+      inherit (builtins) listToAttrs map;
+      inherit (nixpkgs.lib) nixosSystem;
+
+      hostNames = [ "desktop" "server" ];
+    in
+    {
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      nixosConfigurations = listToAttrs (map (hostName: { name = hostName; value = nixosSystem ((import nixos/${hostName}.nix) inputs); }) hostNames);
     };
-  };
 }
