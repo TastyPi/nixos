@@ -21,15 +21,4 @@
     };
   };
   xdg.enable = true;
-  xdg.configFile."whatsapp-for-linux/settings.conf".text = ''
-    [general]
-    notification-sounds=true
-    close-to-tray=true
-    start-in-tray=true
-    start-minimized=false
-
-    [web]
-    hw-accel=1
-    allow-permissions=true
-  '';
 }

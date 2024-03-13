@@ -11,6 +11,7 @@
     ./all.nix
     ./desktop/adb.nix
     ./desktop/gnome.nix
+    ./desktop/mkvtoolnix.nix
     ./desktop/picard.nix
     {
       networking.hostName = "desktop";
