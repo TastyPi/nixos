@@ -1,6 +1,6 @@
 with builtins;
 let
-  secrets = import ../../secrets/authelia.nix;
+  secrets = import ../../../secrets/authelia.nix;
   configurationFile = builtins.toFile "configuration.yml" (builtins.toJSON {
     theme = "auto";
     jwt_secret = secrets.jwt_secret;

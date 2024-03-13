@@ -12,7 +12,7 @@
 
   tastypi.mailrise.smartd = {
     gotify = {
-      token = (import ../secrets/gotify.nix).smartd;
+      token = (import ../../secrets/gotify.nix).smartd;
       priority = "high";
     };
     mailrise.title_template = "$subject";

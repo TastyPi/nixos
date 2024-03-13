@@ -14,7 +14,7 @@ let
     {
       radarr = {
         port = 7878;
-        api_key = import ../../secrets/radarr.nix;
+        api_key = import ../../../secrets/radarr.nix;
         trash_ids = [
           # HDR Formats
           "58d6a88f13e2db7f5059c41047876f00" # DV
@@ -53,7 +53,7 @@ let
       };
       sonarr = {
         port = 8989;
-        api_key = import ../../secrets/sonarr.nix;
+        api_key = import ../../../secrets/sonarr.nix;
         trash_ids = [
           # HDR Formats
           "6d0d8de7b57e35518ac0308b0ddf404e" # DV

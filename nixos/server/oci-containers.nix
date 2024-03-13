@@ -11,6 +11,7 @@
     ./oci-containers/jfa-go.nix
     ./oci-containers/mailrise.nix
     ./oci-containers/matter.nix
+    ./oci-containers/nzbget.nix
     ./oci-containers/prowlarr.nix
     ./oci-containers/radarr.nix
     ./oci-containers/recyclarr.nix

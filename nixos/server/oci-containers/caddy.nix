@@ -58,7 +58,7 @@ let
           challenges.dns = {
             provider = {
               name = "cloudflare";
-              api_token = (import ../../secrets/cloudflare.nix).dns;
+              api_token = (import ../../../secrets/cloudflare.nix).dns;
             };
             resolvers = [ "1.1.1.1" ];
           };
