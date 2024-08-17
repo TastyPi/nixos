@@ -7,7 +7,7 @@ let
   drivePaths = {
     m1 = "${motherboard}1-part3";
     m2 = "${motherboard}2";
-    m3 = "${motherboard}3";
+    #m3 = "${motherboard}3";
     m4 = "${motherboard}4";
     m5 = "${motherboard}5";
     m6 = "${motherboard}6";
