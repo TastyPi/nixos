@@ -45,7 +45,6 @@ rec {
   virtualisation.oci-containers.containers = {
     jellyfin = jellyfin {
       name = "rogers.me.uk";
-      image = "docker.io/jellyfin/jellyfin:20240126.4-unstable";
       uid = users.users.jellyfin.uid;
       volumes = [ "/data/files/media:/media:rw" ];
     };
