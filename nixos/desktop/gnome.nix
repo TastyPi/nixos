@@ -36,6 +36,10 @@
   };
   programs._1password-gui.enable = true;
   services = {
+    displayManager.autoLogin = {
+      enable = true;
+      user = "graham";
+    };
     gnome = {
       gnome-initial-setup.enable = false;
       gnome-online-accounts.enable = false;
@@ -47,10 +51,6 @@
       enable = true;
       desktopManager.gnome.enable = true;
       displayManager = {
-        autoLogin = {
-          enable = true;
-          user = "graham";
-        };
         gdm.enable = true;
       };
       excludePackages = with pkgs; [
