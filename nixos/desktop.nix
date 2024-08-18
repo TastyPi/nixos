@@ -13,6 +13,7 @@
     ./desktop/gnome.nix
     ./desktop/mkvtoolnix.nix
     ./desktop/picard.nix
+    ./desktop/vm.nix
     {
       networking.hostName = "desktop";
 
