@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     libva-minimal
     libvdpau
-    mesa_drivers
+    mesa.drivers
     vaapiVdpau
   ];
   hardware.graphics = {
