@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment = {
-    gnome.excludePackages = with pkgs; with gnome; [
+    gnome.excludePackages = with pkgs; [
       cheese
       eog
       epiphany
