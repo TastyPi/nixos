@@ -51,7 +51,10 @@ rec {
     tastypi-tv = jellyfin {
       name = "tastypi.tv";
       uid = users.users.tastypi-tv.uid;
-      volumes = [ "/data/files/media/oxsc:/media:ro" ];
+      volumes = [
+        "/data/files/media/oxsc:/media:ro"
+        "/data/files/media:/media-private:ro"
+      ];
     };
   };
 }
