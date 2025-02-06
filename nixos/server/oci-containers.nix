@@ -6,7 +6,6 @@
     ./oci-containers/filebrowser.nix
     ./oci-containers/flaresolverr.nix
     ./oci-containers/gotify.nix
-    ./oci-containers/home-assistant.nix
     ./oci-containers/jellyfin.nix
     ./oci-containers/jfa-go.nix
     ./oci-containers/mailrise.nix
