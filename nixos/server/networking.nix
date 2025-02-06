@@ -4,8 +4,7 @@ in
 {
   # Networking
   networking = {
-    # I really did try to use the firewall, but could not get mDNS working for Matter
-    firewall.enable = false;
+    firewall.enable = true;
     useDHCP = false;
     useNetworkd = true;
   };
