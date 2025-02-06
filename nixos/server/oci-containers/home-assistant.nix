@@ -5,7 +5,7 @@ rec {
   systemd.services.podman-home-assistant = {
     after = [ "data.mount" ];
     requires = [ "data.mount" ];
-    wants = [ "podman-matter.service" "podman-zwave.service" ];
+    wants = [ "podman-matter.service" ];
   };
 
   tastypi.caddy.home-assistant.endpoint = "home-assistant:8123";
