@@ -15,7 +15,7 @@
     ./oci-containers/recyclarr.nix
     ./oci-containers/sonarr.nix
     ./oci-containers/syncthing.nix
-    ./oci-containers/transmission.nixs
+    ./oci-containers/transmission.nix
   ];
 
   # Enable auto-updates
