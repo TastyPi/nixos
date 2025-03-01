@@ -8,7 +8,7 @@
       inherit (builtins) listToAttrs map;
       inherit (nixpkgs.lib) nixosSystem;
 
-      hostNames = [ "desktop" "server" ];
+      hostNames = [ "server" ];
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
