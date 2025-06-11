@@ -5,7 +5,7 @@ let
   motherboard = "/dev/disk/by-path/pci-0000:00:17.0-ata-";
   card = "/dev/disk/by-path/pci-0000:01:00.0-ata-";
   drivePaths = {
-    m1 = "${motherboard}1-part3";
+    #m1 = "${motherboard}1-part3";
     m2 = "${motherboard}2";
     #m3 = "${motherboard}3";
     m4 = "${motherboard}4";
